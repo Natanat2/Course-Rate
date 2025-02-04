@@ -12,7 +12,7 @@ then
 fi
 
 python manage.py migrate
-python manage.py collectstatic --noinput
+#python manage.py collectstatic --noinput
 gunicorn project.wsgi:application --bind 0.0.0.0:8000 --workers=$GUNICORN_WORKERS --threads=$GUNICORN_THREADS --reload
 
 #gunicorn project.wsgi:application \
