@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from decouple import config, Csv
+from celery.schedules import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -143,3 +144,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CELERY
 CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+
+
+# CELERY_BEAT_SCHEDULE = {
+#     'every_10_seconds': {
+#         'task': 'rate_app.tasks.course_rate',
+#         'schedule': timedelta(seconds=10),
+#     },
+# }
