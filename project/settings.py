@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -146,9 +147,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_BROKER_URL = config('CELERY_BROKER_URL')
 
 
-# CELERY_BEAT_SCHEDULE = {
-#     'every_10_seconds': {
-#         'task': 'rate_app.tasks.course_rate',
-#         'schedule': timedelta(seconds=10),
-#     },
-# }
+CELERY_BEAT_SCHEDULE = {
+    'every_10_seconds': {
+        'task': 'app.tasks.course_rate',
+        'schedule': timedelta(seconds=10),
+    },
+}
