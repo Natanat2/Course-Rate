@@ -1,9 +1,11 @@
 import requests
+from celery import shared_task
 from django.utils.timezone import now
 from .models import CourseRateUsd
 from requests.exceptions import RequestException
 
 
+@shared_task()
 def course_rate():
     url = 'https://api.frankfurter.dev/v1/latest'
 
